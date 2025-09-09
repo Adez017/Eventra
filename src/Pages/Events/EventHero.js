@@ -26,7 +26,7 @@ export default function EventHero({
   ];
 
   return (
-    <div className="relative bg-gradient-to-l from-indigo-200 to-white text-gray-900 py-24 overflow-hidden">
+    <div className="relative bg-gradient-to-l from-indigo-200 to-white dark:from-gray-800 dark:to-gray-900 text-gray-900 dark:text-gray-100 py-24 overflow-hidden">
       {/* Floating Circles */}
       {floatingCircles.map((circle, idx) => (
         <motion.div
@@ -72,11 +72,11 @@ export default function EventHero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto"
+          className="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
         >
           "Discover exciting events, compete with talented participants, learn
           new skills, and{" "}
-          <span className="font-semibold text-indigo-600">
+          <span className="font-semibold text-indigo-600 dark:text-indigo-400">
             win amazing rewards 🚀
           </span>
           <span>"</span>
@@ -91,16 +91,16 @@ export default function EventHero({
         >
           <div className="relative group">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center z-10 pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors" />
+              <Search className="h-5 w-5 text-gray-400 dark:text-gray-500 group-focus-within:text-indigo-500 transition-colors" />
             </div>
 
             <input
               type="text"
               placeholder="Search events by name, location, or tags..."
-              className="block w-full pl-12 pr-12 py-4 text-base text-gray-900 placeholder-gray-400 
-               bg-white/60 backdrop-blur-xl border border-gray-200 rounded-2xl
+              className="block w-full pl-12 pr-12 py-4 text-base text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 
+               bg-white/60 dark:bg-gray-800/60 backdrop-blur-xl border border-gray-200 dark:border-gray-600 rounded-2xl
                focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500
-               transition-all duration-300 shadow-lg hover:shadow-xl"
+               transition-all duration-300 shadow-lg hover:shadow-xl dark:shadow-gray-900/20"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -110,7 +110,7 @@ export default function EventHero({
                 whileHover={{ rotate: 90, scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setSearchQuery("")}
-                className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors z-10"
+                className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors z-10"
               >
                 <X className="h-5 w-5" />
               </motion.button>
@@ -133,13 +133,13 @@ export default function EventHero({
                   key={idx}
                   whileHover={{ scale: 1.1 }}
                   onClick={() => setSearchQuery(tag)}
-                  className="px-3 py-1 text-xs font-medium text-indigo-600 bg-indigo-50 rounded-full cursor-pointer hover:bg-indigo-100 transition"
+                  className="px-3 py-1 text-xs font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 rounded-full cursor-pointer hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition"
                 >
                   {tag}
                 </motion.span>
               ))}
             </div>
-            <span className="text-sm text-indigo-600 font-semibold">
+            <span className="text-sm text-indigo-600 dark:text-indigo-400 font-semibold">
               {filteredEvents.length}{" "}
               {filteredEvents.length === 1 ? "event" : "events"} found
             </span>
@@ -169,10 +169,10 @@ export default function EventHero({
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative px-7 py-3.5 rounded-xl font-medium text-gray-800 shadow-md backdrop-blur-md border border-gray-300 hover:border-indigo-400 transition-all duration-300 bg-white/70"
+            className="relative px-7 py-3.5 rounded-xl font-medium text-gray-800 dark:text-gray-200 shadow-md backdrop-blur-md border border-gray-300 dark:border-gray-600 hover:border-indigo-400 dark:hover:border-indigo-400 transition-all duration-300 bg-white/70 dark:bg-gray-800/70"
           >
             <span className="relative flex items-center">
-              <Users className="inline-block w-5 h-5 mr-2 text-indigo-600" />
+              <Users className="inline-block w-5 h-5 mr-2 text-indigo-600 dark:text-indigo-400" />
               Host an Event
             </span>
             <span className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-indigo-500 transition-all duration-500"></span>
@@ -199,22 +199,22 @@ export default function EventHero({
               ease: "easeOut",
             }}
             whileHover={{ scale: 1.05 }}
-            className="relative group bg-white rounded-2xl shadow-md shadow-blue-200/40 p-5 flex flex-col items-center text-center hover:shadow-lg transition-all duration-300"
+            className="relative group bg-white dark:bg-gray-800 rounded-2xl shadow-md shadow-blue-200/40 dark:shadow-gray-900/20 p-5 flex flex-col items-center text-center hover:shadow-lg dark:hover:shadow-gray-900/30 transition-all duration-300"
           >
             {/* Icon */}
             <motion.div
               whileHover={{ scale: 1.2 }}
               transition={{ type: "spring", stiffness: 200, damping: 12 }}
-              className="mb-3 flex items-center justify-center h-14 w-14 rounded-full bg-blue-50 text-blue-500"
+              className="mb-3 flex items-center justify-center h-14 w-14 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400"
             >
               <stat.icon className="h-7 w-7" />
             </motion.div>
 
             {/* Value */}
-            <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</p>
 
             {/* Label */}
-            <p className="mt-1 text-sm text-gray-500">{stat.label}</p>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{stat.label}</p>
           </motion.div>
         ))}
       </div>
