@@ -46,7 +46,7 @@ const Community = () => {
   };
 
   return (
-    <section className="relative bg-white py-20 sm:py-28">
+    <section className="relative bg-white dark:bg-gray-900 py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={container}
@@ -56,17 +56,17 @@ const Community = () => {
         >
           <motion.h2
             variants={item}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6"
           >
             <span className="block">Connect, collaborate, and</span>
-            <span className="text-transparent bg-clip-text bg-indigo-600">
+            <span className="text-transparent bg-clip-text bg-indigo-600 dark:bg-indigo-400">
               create amazing events together.
             </span>
           </motion.h2>
 
           <motion.p
             variants={item}
-            className="text-lg text-gray-600 max-w-3xl mx-auto mb-10"
+            className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10"
           >
             Join our community of event organizers, share best practices, and get support for your events.
           </motion.p>
@@ -91,7 +91,7 @@ const Community = () => {
             <motion.div variants={buttonItem}>
               <a
                 href="#discord"
-                className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
               >
                 Join Discord
               </a>
@@ -100,7 +100,7 @@ const Community = () => {
         </motion.div>
 
         <motion.div 
-          className="bg-indigo-50 rounded-2xl p-8 sm:p-12 text-center"
+          className="bg-indigo-50 dark:bg-gray-800 rounded-2xl p-8 sm:p-12 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={controls}
           variants={{
@@ -116,10 +116,10 @@ const Community = () => {
             }
           }}
         >
-          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Ready to create your first event?
           </h3>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Join hundreds of organizations using Eventra for their events
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -131,7 +131,7 @@ const Community = () => {
             </Link>
             <Link 
               to="/events" 
-              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors"
             >
               Browse hackathons
             </Link>

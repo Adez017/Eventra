@@ -78,7 +78,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-indigo-50 via-indigo-100 to-white py-24 lg:py-32">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-indigo-50 via-indigo-100 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-24 lg:py-32">
       {/* Floating Gradient Shapes */}
       {shapes.map((shape, i) => (
         <motion.div
@@ -104,7 +104,7 @@ const Hero = () => {
           {/* Headline */}
           <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-snug">
             <motion.span
-              className="block text-gray-900"
+              className="block text-gray-900 dark:text-gray-100"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -116,7 +116,7 @@ const Hero = () => {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={index}
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-800 via-blue-500 to-purple-700 mb-4"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-800 via-blue-500 to-purple-700 dark:from-indigo-400 dark:via-blue-400 dark:to-purple-400 mb-4"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{
                     opacity: 1,
@@ -138,7 +138,7 @@ const Hero = () => {
           {/* Subtext */}
           <motion.p
   variants={fadeUp}
-  className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto mt-2 mb-12"
+  className="text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mt-2 mb-12"
 >
   "Connect with developers, learn new skills, and grow your network at
   the best tech events, hackathons, and workshops in your area."
@@ -179,7 +179,7 @@ const Hero = () => {
             <motion.div variants={fadeUp}>
               <Link
                 to="/hackathons"
-                className="relative inline-flex items-center px-8 py-4 rounded-full border border-gray-300 bg-white text-gray-700 font-semibold shadow hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="relative inline-flex items-center px-8 py-4 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-semibold shadow hover:shadow-lg hover:scale-105 transition-all duration-300"
               >
                 Join Hackathons
               </Link>
@@ -218,12 +218,12 @@ const Hero = () => {
                 variants={fadeUp}
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-white/30 backdrop-blur-md rounded-2xl p-6 text-center shadow-lg"
+                className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-md rounded-2xl p-6 text-center shadow-lg dark:shadow-gray-900/20"
               >
                 <p className={`text-3xl font-bold mb-2 ${stat.color}`}>
                   {stat.value}
                 </p>
-                <p className="text-gray-700 text-sm">{stat.label}</p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>

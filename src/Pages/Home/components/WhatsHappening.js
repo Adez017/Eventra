@@ -48,9 +48,9 @@ const WhatsHappening = () => {
   ];
 
   const statusColors = {
-    "Registration Open": "bg-green-100 text-green-800",
-    "Coming Soon": "bg-blue-100 text-blue-800",
-    Planning: "bg-yellow-100 text-yellow-800",
+    "Registration Open": "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-400",
+    "Coming Soon": "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400",
+    Planning: "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400",
   };
 
   const nextSlide = () => {
@@ -76,7 +76,7 @@ const WhatsHappening = () => {
   };
 
   return (
-    <section ref={ref} className="py-12 sm:py-16 bg-white">
+    <section ref={ref} className="py-12 sm:py-16 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
@@ -85,10 +85,10 @@ const WhatsHappening = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 dark:text-gray-100">
             What's Happening Now
           </h2>
-          <p className="mt-2 sm:mt-3 max-w-xl mx-auto text-sm sm:text-lg text-gray-500">
+          <p className="mt-2 sm:mt-3 max-w-xl mx-auto text-sm sm:text-lg text-gray-500 dark:text-gray-400">
             Stay updated with upcoming events, community programs, and
             opportunities to contribute to Eventra
           </p>
@@ -99,7 +99,7 @@ const WhatsHappening = () => {
           {/* Prev Button */}
           <button
             onClick={prevSlide}
-            className="absolute -left-6 sm:-left-12 p-2 rounded-full bg-white shadow hover:bg-gray-100 z-10 text-sm sm:text-base"
+            className="absolute -left-6 sm:-left-12 p-2 rounded-full bg-white dark:bg-gray-800 shadow hover:bg-gray-100 dark:hover:bg-gray-700 z-10 text-sm sm:text-base text-gray-700 dark:text-gray-300"
           >
             ◀
           </button>
@@ -115,10 +115,10 @@ const WhatsHappening = () => {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5 }}
-                className={`flex flex-col rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 ${
+                className={`flex flex-col rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white dark:bg-gray-800 ${
                   upcomingEvents[current].featured
                     ? "ring-2 ring-indigo-500"
-                    : "border border-gray-100"
+                    : "border border-gray-100 dark:border-gray-700"
                 }`}
               >
                 <div className="p-4 sm:p-6 flex-1 flex flex-col">
@@ -126,26 +126,26 @@ const WhatsHappening = () => {
                     <span
                       className={`inline-flex items-center px-2 py-1 rounded-full text-xs sm:text-sm font-medium ${
                         statusColors[upcomingEvents[current].status] ||
-                        "bg-gray-100 text-gray-800"
+                        "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
                       }`}
                     >
                       {upcomingEvents[current].status}
                     </span>
-                    <span className="text-xs sm:text-sm text-gray-500">
+                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                       {upcomingEvents[current].type}
                     </span>
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                     {upcomingEvents[current].title}
                   </h3>
-                  <p className="text-gray-600 flex-1 mb-3 sm:mb-4 text-sm sm:text-base">
+                  <p className="text-gray-600 dark:text-gray-300 flex-1 mb-3 sm:mb-4 text-sm sm:text-base">
                     {upcomingEvents[current].description}
                   </p>
 
-                  <div className="flex items-center text-xs sm:text-sm text-gray-500 mt-2 sm:mt-4">
+                  <div className="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-4">
                     <svg
-                      className="flex-shrink-0 mr-1.5 h-4 w-4 sm:h-5 sm:w-5 text-gray-400"
+                      className="flex-shrink-0 mr-1.5 h-4 w-4 sm:h-5 sm:w-5 text-gray-400 dark:text-gray-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -162,13 +162,13 @@ const WhatsHappening = () => {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 px-4 sm:px-6 py-3 sm:py-4">
+                <div className="bg-gray-50 dark:bg-gray-700 px-4 sm:px-6 py-3 sm:py-4">
                   <a
                     href={upcomingEvents[current].link}
                     className={`w-full inline-flex items-center justify-center px-3 sm:px-4 py-2 sm:py-2.5 border border-transparent rounded-md shadow-sm text-xs sm:text-sm font-medium ${
                       upcomingEvents[current].featured
                         ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                        : "text-indigo-600 bg-white border-indigo-100 hover:bg-indigo-50"
+                        : "text-indigo-600 dark:text-indigo-400 bg-white dark:bg-gray-800 border-indigo-100 dark:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-gray-700"
                     }`}
                     target={
                       upcomingEvents[current].link.startsWith("http")
@@ -208,7 +208,7 @@ const WhatsHappening = () => {
           {/* Next Button */}
           <button
             onClick={nextSlide}
-            className="absolute -right-6 sm:-right-12 p-2 rounded-full bg-white shadow hover:bg-gray-100 z-10 text-sm sm:text-base"
+            className="absolute -right-6 sm:-right-12 p-2 rounded-full bg-white dark:bg-gray-800 shadow hover:bg-gray-100 dark:hover:bg-gray-700 z-10 text-sm sm:text-base text-gray-700 dark:text-gray-300"
           >
             ▶
           </button>
@@ -224,7 +224,7 @@ const WhatsHappening = () => {
                 setCurrent(i);
               }}
               className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full ${
-                current === i ? "bg-indigo-600" : "bg-gray-300"
+                current === i ? "bg-indigo-600" : "bg-gray-300 dark:bg-gray-600"
               }`}
             />
           ))}
@@ -232,17 +232,17 @@ const WhatsHappening = () => {
 
         {/* Info Section */}
         <motion.div
-          className="mt-12 sm:mt-16 bg-indigo-50 rounded-xl p-6 sm:p-10"
+          className="mt-12 sm:mt-16 bg-indigo-50 dark:bg-gray-800 rounded-xl p-6 sm:p-10"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <div className="md:flex md:items-center md:justify-between">
             <div className="md:flex-1 md:pr-8">
-              <h3 className="text-lg sm:text-2xl font-bold text-gray-900">
+              <h3 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-gray-100">
                 Eventra is participating in GirlScript Summer of Code 2025!
               </h3>
-              <p className="mt-2 sm:mt-3 text-sm sm:text-base text-gray-600">
+              <p className="mt-2 sm:mt-3 text-sm sm:text-base text-gray-600 dark:text-gray-300">
                 We're excited to mentor contributors and welcome new developers to our open-source community. 
                 Join us in building the future of event management!
               </p>
@@ -258,7 +258,7 @@ const WhatsHappening = () => {
               </a>
               <a
                 href="https://github.com/sandeepvashishtha/Eventra/issues"
-                className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 border border-gray-300 text-sm sm:text-base font-medium rounded-md shadow-sm text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-3 border border-gray-300 dark:border-gray-600 text-sm sm:text-base font-medium rounded-md shadow-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 target="_blank"
                 rel="noopener noreferrer"
               >

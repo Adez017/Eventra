@@ -141,7 +141,7 @@ const Footer = () => {
       href: "https://twitter.com/#",
       icon: (
         <FaTwitter
-          className="size-10 p-2 rounded-full text-indigo-500 bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100"
+          className="size-10 p-2 rounded-full text-indigo-500 bg-white dark:bg-gray-800 dark:text-indigo-400 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-700"
           size={20}
         />
       ),
@@ -151,7 +151,7 @@ const Footer = () => {
       href: "https://www.linkedin.com/in/sandeepvashishtha/",
       icon: (
         <FaLinkedin
-          className="size-10 p-2 rounded-full text-indigo-500 bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100"
+          className="size-10 p-2 rounded-full text-indigo-500 bg-white dark:bg-gray-800 dark:text-indigo-400 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-700"
           size={20}
         />
       ),
@@ -161,7 +161,7 @@ const Footer = () => {
       href: "#discord",
       icon: (
         <FaDiscord
-          className="size-10 p-2 rounded-full text-indigo-500 bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100"
+          className="size-10 p-2 rounded-full text-indigo-500 bg-white dark:bg-gray-800 dark:text-indigo-400 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-700"
           size={20}
         />
       ),
@@ -171,7 +171,7 @@ const Footer = () => {
       href: "https://t.me/eventra",
       icon: (
         <FaTelegram
-          className="size-10 p-2 rounded-full text-indigo-500 bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100"
+          className="size-10 p-2 rounded-full text-indigo-500 bg-white dark:bg-gray-800 dark:text-indigo-400 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-700"
           size={20}
         />
       ),
@@ -180,21 +180,21 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-indigo-50 border-t border-gray-100">
+      <footer className="bg-indigo-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             <div className="space-y-4 md:col-span-2">
-              <h2 className="text-3xl font-bold text-indigo-600">Eventra</h2>
-              <p className="text-gray-600 text-sm">
+              <h2 className="text-3xl font-bold text-indigo-600 dark:text-indigo-400">Eventra</h2>
+              <p className="text-gray-600 dark:text-gray-400 text-sm">
                 Open-source event management for communities worldwide.
               </p>
 
               {/* Newsletter Subscription Form */}
               <div className="mt-6">
-                <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-3">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wider mb-3">
                   Subscribe to our newsletter
                 </h4>
-                <p className="text-gray-600 text-sm mb-3">
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-3">
                   Get the latest updates, event tips, and community news.
                 </p>
                 <form
@@ -206,7 +206,7 @@ const Footer = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
-                    className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent flex-grow"
+                    className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent flex-grow bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400"
                     disabled={isSubmitting}
                   />
                   <button
@@ -217,7 +217,7 @@ const Footer = () => {
                     {isSubmitting ? "Subscribing..." : "Subscribe"}
                   </button>
                 </form>
-                <p className="text-xs text-gray-500 mt-2">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
                   We respect your privacy. Unsubscribe at any time.
                 </p>
               </div>
@@ -225,7 +225,7 @@ const Footer = () => {
 
             {Object.entries(footerLinks).map(([key, links]) => (
               <div key={key} className="space-y-3">
-                <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 uppercase tracking-wider">
                   {key.replace("_", " ")}
                 </h4>
                 <ul className="space-y-2">
@@ -233,10 +233,10 @@ const Footer = () => {
                     <li key={link.name}>
                       <a
                         href={link.href}
-                        className="text-sm text-gray-600 hover:text-indigo-600 flex items-center gap-2 transition-colors"
+                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center gap-2 transition-colors"
                       >
                         {link.icon && (
-                          <span className="text-indigo-500">{link.icon}</span>
+                          <span className="text-indigo-500 dark:text-indigo-400">{link.icon}</span>
                         )}
                         {link.name}
                       </a>
@@ -247,8 +247,8 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="border-t border-gray-400 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-gray-500">
+          <div className="border-t border-gray-400 dark:border-gray-600 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               © {currentYear} Eventra. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
@@ -256,7 +256,7 @@ const Footer = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-gray-400 hover:text-indigo-600 transition-colors"
+                  className="text-gray-400 dark:text-gray-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.name}

@@ -34,7 +34,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 sm:py-20 bg-white overflow-hidden">
+    <section className="py-16 sm:py-20 bg-white dark:bg-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <motion.div
@@ -44,10 +44,10 @@ const Testimonials = () => {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-4xl">
             Stories from our community
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
             Join thousands of professionals who trust Eventra for their events
           </p>
         </motion.div>
@@ -72,22 +72,22 @@ const Testimonials = () => {
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-80 p-7 rounded-xl bg-white border-2 border-gray-100 shadow-sm"
+                className="flex-shrink-0 w-80 p-7 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-100 dark:border-gray-700 shadow-sm dark:shadow-gray-900/20"
               >
-                <FaQuoteLeft className="absolute top-6 right-6 text-gray-100 text-4xl -z-10" />
-                <p className="text-gray-700 mb-6">{testimonial.quote}</p>
-                <div className="mt-auto pt-6 border-t border-gray-100 flex items-center">
+                <FaQuoteLeft className="absolute top-6 right-6 text-gray-100 dark:text-gray-700 text-4xl -z-10" />
+                <p className="text-gray-700 dark:text-gray-300 mb-6">{testimonial.quote}</p>
+                <div className="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700 flex items-center">
                   <img
                     src={testimonial.image}
                     alt={testimonial.author}
-                    className="h-12 w-12 rounded-full object-cover border-2 border-white shadow-sm"
+                    className="h-12 w-12 rounded-full object-cover border-2 border-white dark:border-gray-600 shadow-sm"
                     onError={(e) => (e.target.style.display = "none")}
                   />
                   <div className="ml-4">
-                    <div className="font-semibold text-gray-900">
+                    <div className="font-semibold text-gray-900 dark:text-gray-100">
                       {testimonial.author}
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-gray-600 dark:text-gray-400">
                       {testimonial.role}
                     </div>
                   </div>

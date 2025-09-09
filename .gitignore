@@ -3,6 +3,10 @@
 
 node_modules
 
+# Build artifacts
+/build
+/dist
+
 # Secret Files - DO NOT COMMIT
 *.SECRETS.*
 *secrets*
