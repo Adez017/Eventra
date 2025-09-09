@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import NavbarLink from "./NavbarLink";
+import ThemeToggle from "./ThemeToggle";
 import { LogIn, ArrowRight } from "lucide-react";
 
 const Navbar = () => {
@@ -37,12 +38,13 @@ const Navbar = () => {
     if (isAuthenticated()) {
       return (
         <div className="hidden md:flex items-center space-x-4 relative">
+          <ThemeToggle />
           <button
             onClick={(e) => {
               e.stopPropagation();
               setShowProfileDropdown(!showProfileDropdown);
             }}
-            className="flex items-center space-x-2 bg-white p-1 rounded-full hover:shadow-md transition-shadow duration-300"
+            className="flex items-center space-x-2 bg-white dark:bg-gray-800 p-1 rounded-full hover:shadow-md transition-shadow duration-300"
           >
             <img
               src={user?.profilePicture || "/default-avatar.png"}
@@ -50,11 +52,11 @@ const Navbar = () => {
               className="w-10 h-10 rounded-full object-cover border-2 border-indigo-600"
               onError={(e) => (e.target.src = "/default-avatar.png")}
             />
-            <span className="text-gray-800 font-medium">
+            <span className="text-gray-800 dark:text-gray-200 font-medium">
               {user?.firstName || user?.email?.split("@")[0] || "User"}
             </span>
             <svg
-              className="w-5 h-5 text-gray-600"
+              className="w-5 h-5 text-gray-600 dark:text-gray-400"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -67,8 +69,8 @@ const Navbar = () => {
           </button>
 
           {showProfileDropdown && (
-            <div className="absolute right-0 mt-3 w-64 bg-white rounded-xl shadow-2xl py-3 z-50 animate-fadeIn">
-              <div className="px-4 py-3 border-b border-gray-100">
+            <div className="absolute right-0 mt-3 w-64 bg-white dark:bg-gray-800 rounded-xl shadow-2xl py-3 z-50 animate-fadeIn border dark:border-gray-700">
+              <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-700">
                 <div className="flex items-center space-x-3">
                   <img
                     src={user?.profilePicture || "/default-avatar.png"}
@@ -76,30 +78,30 @@ const Navbar = () => {
                     className="w-10 h-10 rounded-full object-cover"
                   />
                   <div>
-                    <div className="font-semibold text-gray-900">
+                    <div className="font-semibold text-gray-900 dark:text-gray-100">
                       {user?.firstName && user?.lastName
                         ? `${user.firstName} ${user.lastName}`
                         : user?.email}
                     </div>
-                    <div className="text-sm text-gray-500">{user?.email}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</div>
                   </div>
                 </div>
               </div>
               <Link
                 to="/dashboard"
-                className="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors"
+                className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 Dashboard
               </Link>
               <Link
                 to="/profile"
-                className="flex items-center px-4 py-3 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors"
+                className="flex items-center px-4 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
                 Edit Profile
               </Link>
               <button
                 onClick={handleLogout}
-                className="w-full text-left px-4 py-3 text-red-600 hover:bg-red-50 flex items-center rounded-lg transition-colors"
+                className="w-full text-left px-4 py-3 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center rounded-lg transition-colors"
               >
                 Logout
               </button>
@@ -110,12 +112,13 @@ const Navbar = () => {
     } else {
       return (
         <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
           {/* Sign In Button */}
           <Link
             to="/login"
-            className="flex items-center px-4 py-2 text-gray-800 font-medium rounded-full hover:text-indigo-600 hover:bg-indigo-50 transition-all duration-300 group"
+            className="flex items-center px-4 py-2 text-gray-800 dark:text-gray-200 font-medium rounded-full hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-gray-800 transition-all duration-300 group"
           >
-            <LogIn className="w-5 h-5 mr-2 text-gray-600 group-hover:text-indigo-600 transition-transform duration-300 transform group-hover:translate-x-1" />
+            <LogIn className="w-5 h-5 mr-2 text-gray-600 dark:text-gray-400 group-hover:text-indigo-600 transition-transform duration-300 transform group-hover:translate-x-1" />
             Sign In
           </Link>
 
@@ -168,7 +171,7 @@ const Navbar = () => {
   const renderMobileAuthSection = () => {
     if (isAuthenticated()) {
       return (
-        <div className="mt-auto border-t border-gray-200">
+        <div className="mt-auto border-t border-gray-200 dark:border-gray-700">
           <div className="px-4 py-3 space-y-2">
             <div className="flex items-center space-x-3 px-2 py-2">
               <img
@@ -177,22 +180,22 @@ const Navbar = () => {
                 className="w-9 h-9 rounded-full object-cover"
               />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">
                   {user?.firstName || user?.email?.split("@")[0] || "User"}
                 </p>
-                <p className="text-xs text-gray-500 truncate">{user?.email}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{user?.email}</p>
               </div>
             </div>
             <Link
               to="/dashboard"
-              className="flex items-center px-4 py-2.5 text-gray-700 hover:bg-indigo-50 rounded-lg mx-1"
+              className="flex items-center px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 rounded-lg mx-1"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Dashboard
             </Link>
             <Link
               to="/profile"
-              className="flex items-center px-4 py-2.5 text-gray-700 hover:bg-indigo-50 rounded-lg mx-1"
+              className="flex items-center px-4 py-2.5 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 rounded-lg mx-1"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Edit Profile
@@ -202,7 +205,7 @@ const Navbar = () => {
                 handleLogout();
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full flex items-center px-4 py-2.5 text-left text-red-600 hover:bg-red-50 rounded-lg mx-1"
+              className="w-full flex items-center px-4 py-2.5 text-left text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg mx-1"
             >
               Logout
             </button>
@@ -211,14 +214,14 @@ const Navbar = () => {
       );
     } else {
       return (
-        <div className="mt-auto border-t border-gray-200 p-4 bg-gray-50">
-          <p className="text-sm text-gray-500 mb-3 text-center">
+        <div className="mt-auto border-t border-gray-200 dark:border-gray-700 p-4 bg-gray-50 dark:bg-gray-800">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 text-center">
             Sign in to access more features
           </p>
           <div className="space-y-3">
             <Link
               to="/login"
-              className="block w-full text-center px-4 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-white hover:border-gray-400 transition-colors"
+              className="block w-full text-center px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Sign In
@@ -248,7 +251,7 @@ const Navbar = () => {
         onClick={closeAllMenus}
       />
 
-<nav className="sticky top-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-xl border-b border-gray-300 py-5 transition-all duration-300">
+<nav className="sticky top-0 w-full z-50 bg-white/30 dark:bg-gray-900/30 backdrop-blur-md shadow-xl border-b border-gray-300 dark:border-gray-700 py-5 transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           {/* Brand */}
           <Link to="/" className="flex-shrink-0">
@@ -282,13 +285,14 @@ const Navbar = () => {
           {renderAuthSection()}
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setIsMobileMenuOpen(!isMobileMenuOpen);
               }}
-              className="p-2 rounded-md text-gray-700 hover:text-indigo-600 hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:text-indigo-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               <svg
                 className="h-6 w-6"
@@ -309,15 +313,15 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
+          className={`fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-800 shadow-2xl z-50 transform transition-transform duration-300 ease-in-out flex flex-col ${
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between p-4 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-800">Menu</h3>
+          <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Menu</h3>
             <button
               onClick={closeAllMenus}
-              className="p-1.5 rounded-full text-gray-500 hover:bg-gray-100 transition-colors"
+              className="p-1.5 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
               <svg
                 className="h-6 w-6"
@@ -340,7 +344,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="block px-6 py-3 text-gray-700 hover:bg-indigo-50 rounded-lg mx-2 transition-colors"
+                className="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-indigo-50 dark:hover:bg-gray-700 rounded-lg mx-2 transition-colors"
                 onClick={closeAllMenus}
               >
                 {item.name}

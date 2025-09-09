@@ -23,6 +23,7 @@ import Signup from "./components/auth/Signup";
 import Unauthorized from "./components/auth/Unauthorized";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import PasswordReset from "./components/auth/PasswordReset";
 
 // --------------- DASHBOARD PAGES
@@ -32,62 +33,64 @@ import HomePage from "./Pages/Home/HomePage";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <div className="App">
-          <Navbar />
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <div className="App transition-colors duration-300 min-h-screen bg-white dark:bg-gray-900">
+            <Navbar />
 
-          <main className="min-h-screen">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/hackathons" element={<HackathonPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/contributors" element={<Contributors />} />
-              <Route path="/leaderBoard" element={<LeaderBoard />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactUs />} />{" "}
-              {/* Add ContactUs route */}
-              {/* Protected route for event creation */}
-              <Route
-                path="/create-event"
-                element={
-                  <ProtectedRoute requiredPermissions={["CREATE_EVENT"]}>
-                    <EventCreation />
-                  </ProtectedRoute>
-                }
-              />
-              {/* Dashboard routes */}
-              <Route
-                path="/admin"
-                element={
-                  <ProtectedRoute requiredRoles={["ADMIN"]}>
-                    <AdminDashboard />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
-              {/* Auth routes */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/unauthorized" element={<Unauthorized />} />
-              <Route path="/password-reset" element={<PasswordReset />} />
-              <Route path="/*" element={<NotFound />} />
-            </Routes>
-          </main>
+            <main className="min-h-screen">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/events" element={<EventsPage />} />
+                <Route path="/hackathons" element={<HackathonPage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/contributors" element={<Contributors />} />
+                <Route path="/leaderBoard" element={<LeaderBoard />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/contact" element={<ContactUs />} />{" "}
+                {/* Add ContactUs route */}
+                {/* Protected route for event creation */}
+                <Route
+                  path="/create-event"
+                  element={
+                    <ProtectedRoute requiredPermissions={["CREATE_EVENT"]}>
+                      <EventCreation />
+                    </ProtectedRoute>
+                  }
+                />
+                {/* Dashboard routes */}
+                <Route
+                  path="/admin"
+                  element={
+                    <ProtectedRoute requiredRoles={["ADMIN"]}>
+                      <AdminDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                {/* Auth routes */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/unauthorized" element={<Unauthorized />} />
+                <Route path="/password-reset" element={<PasswordReset />} />
+                <Route path="/*" element={<NotFound />} />
+              </Routes>
+            </main>
 
-          <ScrollToTop />
-          <Footer />
-        </div>
-      </Router>
-    </AuthProvider>
+            <ScrollToTop />
+            <Footer />
+          </div>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 
