@@ -1,15 +1,11 @@
 // Importing necessary React hooks and libraries
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // for animations
-import { Link } from "react-router-dom"; // navigation
 import mockEvents from "./eventsMockData.json"; // mock data file
 import EventHero from "./EventHero"; // Hero section with search
 import EventCard from "./EventCard"; // Card for displaying event details
 import { Grid, List } from "lucide-react"; // icons for toggle view
 import FeedbackButton from "../../components/FeedbackButton"; // Feedback button component
-import { FiCalendar } from "react-icons/fi";
-import { FiRefreshCw } from "react-icons/fi";
-import { FiArrowRight } from "react-icons/fi";
 import EventCTA from "./EventCTA";
 import Fuse from "fuse.js";
 
@@ -74,7 +70,7 @@ const EventsPage = () => {
   // Recalculate when filterType or events change
   useEffect(() => {
     handleSearch(searchQuery);
-  }, [events, filterType]);
+  }, [events, filterType, handleSearch, searchQuery]);
 
   // -----------------------------
   // Animation Variants
@@ -85,11 +81,6 @@ const EventsPage = () => {
       opacity: 1,
       transition: { staggerChildren: 0.15 }, // stagger animation for children
     },
-  };
-
-  const item = {
-    hidden: { y: 20, opacity: 0 }, // slide up effect
-    show: { y: 0, opacity: 1, transition: { duration: 0.5 } },
   };
 
   const scrollToCard = () => {
