@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -14,8 +13,6 @@ import {
 } from "lucide-react";
 
 const EventCard = ({ event }) => {
-  const [liked, setLiked] = useState(false);
-
   // Array of icons to choose from
   const icons = [
     <Star size={20} className="text-yellow-500" />,
@@ -25,73 +22,55 @@ const EventCard = ({ event }) => {
     <Gift size={20} className="text-pink-500" />,
   ];
 
+  // Pick a random icon each render
   const randomIcon = icons[Math.floor(Math.random() * icons.length)];
 
   return (
     <motion.div
-      className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 flex flex-col group"
-      whileHover={{ y: -6, rotateY: 2 }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      // UPDATED: Added dark mode background and border
+      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 flex flex-col"
+      whileHover={{ y: -4 }}
     >
-      {/* Floating like button */}
-      <button
-        onClick={() => setLiked(!liked)}
-        className="absolute top-4 right-4 z-20 bg-white/80 dark:bg-gray-700/80 backdrop-blur-md p-2 rounded-full shadow-md hover:scale-110 transition"
-      >
-        <Heart
-          size={18}
-          className={`${
-            liked ? "fill-red-500 text-red-500" : "text-gray-500 dark:text-gray-300"
-          }`}
-        />
-      </button>
-
       {/* --- Header --- */}
+      {/* UPDATED: Changed gradient, border, and icon background for dark mode */}
       <div className="flex items-center px-6 py-4 gap-4 bg-gradient-to-r from-indigo-50 dark:from-gray-700 to-white dark:to-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="p-2 bg-indigo-100 dark:bg-gray-600 rounded-lg">
-          {randomIcon}
-        </div>
+        <div className="p-2 bg-indigo-100 dark:bg-gray-600 rounded-lg">{randomIcon}</div>
+        {/* UPDATED: Added dark mode text color */}
         <h3 className="text-gray-800 dark:text-gray-100 font-semibold text-lg truncate">
           {event.title}
         </h3>
         <div className="ml-auto">
           {event.status === "upcoming" && (
-            <span className="px-3 py-1 text-xs font-bold bg-gradient-to-r from-green-400 to-green-600 text-white rounded-full shadow">
+            // UPDATED: Added dark mode background and text colors for the tag
+            <span className="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-400 rounded-full">
               Upcoming
-            </span>
-          )}
-          {event.status === "past" && (
-            <span className="px-3 py-1 text-xs font-bold bg-gradient-to-r from-gray-400 to-gray-600 text-white rounded-full shadow">
-              Past
-            </span>
-          )}
-          {event.status === "live" && (
-            <span className="px-3 py-1 text-xs font-bold bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-full shadow animate-pulse">
-              Live 🔴
             </span>
           )}
         </div>
       </div>
 
       {/* --- Event Image --- */}
-      <div className="relative h-56 overflow-hidden">
-        <motion.img
+      <div className="relative h-56">
+        <img
           src={event.image}
           alt={event.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
       </div>
 
       {/* --- Description --- */}
+      {/* UPDATED: Added dark mode border color */}
       <div className="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+        {/* UPDATED: Added dark mode text color */}
         <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3">
           {event.description}
         </p>
       </div>
 
       {/* --- Info Section --- */}
-      <div className="px-6 py-4 grid grid-cols-2 gap-4 text-gray-700 dark:text-gray-300 text-sm backdrop-blur-lg bg-white/30 dark:bg-gray-700/30 rounded-xl m-4">
+      {/* UPDATED: Added dark mode text color */}
+      <div className="px-6 py-4 grid grid-cols-2 gap-4 text-gray-700 dark:text-gray-300 text-sm">
         <div className="flex items-center gap-2">
           <MapPin size={16} className="text-pink-500" />
           <span className="truncate">{event.location}</span>
@@ -117,16 +96,16 @@ const EventCard = ({ event }) => {
       </div>
 
       {/* --- CTA Buttons --- */}
-      <div className="px-6 pb-6 flex gap-3">
+      <div className="px-6 py-4 flex gap-3">
         <Link
           to={`/events/${event.id}`}
-          className="flex-1 relative overflow-hidden inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 text-sm font-medium shadow group"
+          className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 text-sm font-medium shadow hover:from-indigo-600 hover:to-purple-700 transition-all"
         >
-          <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-700 ease-in-out"></span>
           Register Now
         </Link>
         <Link
           to={`/events/${event.id}`}
+          // UPDATED: Added dark mode styles for the secondary button
           className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
         >
           View Details
